@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: movie-frontend
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: movie-frontend
+
+  template:
+    metadata:
+      labels:
+        app: movie-frontend
+
+    spec:
+      containers:
+        - name: movie-frontend
+
+          image: 022067219428.dkr.ecr.us-west-1.amazonaws.com/movie-frontend:latest
+
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
